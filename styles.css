@@ -1,0 +1,6 @@
+.square {
+    background: black;
+    width: 1px;
+    height: 1px;
+    transform: scale(1, 1);
+}
