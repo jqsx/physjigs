@@ -27,7 +27,7 @@ class transform {
                 if (GameObjects[i].goid != goid) {
                     if (col.isColliding(GameObjects[i].Collider, this.position, GameObjects[i].Transform.position)) {
                         let diff = GameObjects[i].Transform.position.subrtact(this.position).normalize();
-                        this.velocity = diff.multiply(new vec(-1, -1)) //this.velocity.add(diff.multiply(new vec(-0.05, -0.05)));
+                        this.velocity = new vec(0, 0) //diff.multiply(new vec(-1, -1)) //this.velocity.add(diff.multiply(new vec(-0.05, -0.05)));
                         this.position = this.last;
                         GameObjects[i].setColor("rgb(255, 200, 200)");
                     } else {

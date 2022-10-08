@@ -10,3 +10,28 @@ body {
     overflow: hidden;
     background: black;
 }
+
+h1 {
+    position: absolute;
+    font: 50px white;
+    color: white;
+    text-shadow: rgba(255, 0, 0, 0.5) 0px 0px;
+    font-family: "Lucida Console", "Courier New", monospace;
+    animation: h1a infinite 5s ease-in-out;
+    text-decoration: dotted green 10px;
+}
+
+@keyframes h1a {
+    0% {
+        text-shadow: rgba(255, 0, 0, 0.5) 0px 0px, rgba(0, 0, 255, 0.5) 0px 0px;
+        filter: blur(1px);
+    }
+    50% {
+        text-shadow: rgba(255, 0, 0, 0.7) 5px 5px, rgba(0, 0, 255, 0.7) -5px -5px;
+        filter: blur(2px);
+    }
+    100% {
+        text-shadow: rgba(255, 0, 0, 0.5) 0px 0px, rgba(0, 0, 255, 0.5) 0px 0px;
+        filter: blur(1px);
+    }
+}
