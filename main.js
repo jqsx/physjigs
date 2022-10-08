@@ -1,14 +1,19 @@
 const body = document.getElementById('body');
 
-const size = new vec(100, 100);
-const col = new collider(size, size.multiply(new vec(-1, -1)));
+const size = new vec(50, 50);
+const col = new collider(size.multiply(new vec(0.5, 0.5)), size.multiply(new vec(-0.5, -0.5)));
 
-const t = new transform(new vec(300, 200), 0, size);
-const g = new GameObject(t, col);
-const gc = new GameObject(new transform(new vec(290, 500), 0, new vec(100, 100)), col);
+for (let i = 0; i < 10; i++) {
+    const t = new transform(new vec((i % 10) * size.x + i, Math.floor(i / 10) * size.y * 2), 0, size);
+    const g = new GameObject(t, col);
+    g.assignGraphic("body");
+}
 
-g.assignGraphic("body");
-gc.assignGraphic("body");
+for (let i = 0; i < 5; i++) {
+    const t = new transform(new vec((i % 10) * size.x + i, Math.floor(i / 10) * size.y * 2 + 500), 0, size);
+    const g = new GameObject(t, col);
+    g.assignGraphic("body");
+}
 
 // ================================================================= 
 const update = () => {

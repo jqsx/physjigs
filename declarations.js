@@ -16,6 +16,7 @@ class transform {
     updateVelocity(col = collider, goid = String) {
         if (this.hasGravity) {
             this.velocity.y += 1;
+            this.velocity.x *= 0.9;
 
             if (this.position.y > window.innerHeight - this.scale.y / 2 - 10) { // temp ground
                 this.position.y = window.innerHeight - this.scale.y / 2 - 10;
@@ -25,10 +26,10 @@ class transform {
             for (let i = 0; i < GameObjects.length; i++) {
                 if (GameObjects[i].goid != goid) {
                     if (col.isColliding(GameObjects[i].Collider, this.position, GameObjects[i].Transform.position)) {
-                        let diff = GameObjects[i].Transform.position.subrtact(this.position);
-                        this.velocity = new vec(0, 0) //this.velocity.add(diff.multiply(new vec(-0.05, -0.05)));
+                        let diff = GameObjects[i].Transform.position.subrtact(this.position).normalize();
+                        this.velocity = diff.multiply(new vec(-1, -1)) //this.velocity.add(diff.multiply(new vec(-0.05, -0.05)));
                         this.position = this.last;
-                        GameObjects[i].setColor("red");
+                        GameObjects[i].setColor("rgb(255, 200, 200)");
                     } else {
                         GameObjects[i].setColor("white");
                     }
