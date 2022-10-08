@@ -1,12 +1,19 @@
 const body = document.getElementById('body');
 
-const t = new transform(new vec(0, 0), 0, new vec(100, 100));
-const c = new collider();
-const g = new GameObject(t, c);
+const size = new vec(100, 100);
+const col = new collider(size, size.multiply(new vec(-1, -1)));
 
-asignGraphic(g);
+const t = new transform(new vec(300, 200), 0, size);
+const g = new GameObject(t, col);
+const gc = new GameObject(new transform(new vec(290, 500), 0, new vec(100, 100)), col);
 
-function asignGraphic(target = GameObject) {
-    const str = '<div id="' + target.goid + '" class="square" style="transform: ' + target.Transform.toCSS() + '"></div>';
-    body.innerHTML += str;
+g.assignGraphic("body");
+gc.assignGraphic("body");
+
+// ================================================================= 
+const update = () => {
+    for (let i = 0; i < GameObjects.length; i++) {
+        GameObjects[i].update();
+    }
 }
+setInterval(update, 1000 / 30);

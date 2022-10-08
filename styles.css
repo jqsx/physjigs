@@ -1,6 +1,12 @@
 .square {
-    background: black;
+    background: white;
     width: 1px;
     height: 1px;
     transform: scale(1, 1);
+    position: absolute;
+}
+
+body {
+    overflow: hidden;
+    background: black;
 }
