@@ -1,24 +1,16 @@
 const body = document.getElementById('body');
 
-const size = new vec(50, 50);
-const col = new collider(size.multiply(new vec(0.5, 0.5)), size.multiply(new vec(-0.5, -0.5)));
+const size = new vec(100, 100);
+const col = new collider(size.multiply(new vec(1, 1)), size.multiply(new vec(-1, -1))); // terrible creation process, if js had multiple constuctors functionality then maybe id be able to do easier gameobject creation and for now i dont care
 
-for (let i = 0; i < 10; i++) {
-    const t = new transform(new vec((i % 10) * size.x + i, Math.floor(i / 10) * size.y * 2), 0, size);
-    const g = new GameObject(t, col);
-    g.assignGraphic("body");
-}
-
-for (let i = 0; i < 5; i++) {
-    const t = new transform(new vec((i % 10) * size.x + i, Math.floor(i / 10) * size.y * 2 + 500), 0, size);
-    const g = new GameObject(t, col);
-    g.assignGraphic("body");
-}
-
-// ================================================================= 
-const update = () => {
-    for (let i = 0; i < GameObjects.length; i++) {
-        GameObjects[i].update();
+const sp = () => { // sample cube spawning function
+    if (GameObjects.length < 5) {
+        const t = new transform(new vec(50 * (GameObjects.length + 2) + GameObjects.length, 100), 0, size);
+        const g = new GameObject(t, col);
+        g.assignGraphic("body");
     }
+    setTimeout(sp, 1000);
 }
-setInterval(update, 1000 / 30);
+sp();
+
+// i somehow managed to break the entire thing by just writing comments thats sick
